@@ -1,66 +1,99 @@
 # Car-Rental-Request-Automation-in-ServiceNow
-project Overview:
 
-This project automates the end-to-end **Car Rental Request** process within ServiceNow. By replacing traditional manual email and paper-based requests with a digital Service Catalog item, the system streamlines request submissions, automated manager approval routing, fulfillment task assignments for fleet teams, and exception management.
+ A ServiceNow-based automation project that streamlines the complete car rental request lifecycle — from Service Catalog submission and manager approval to fleet fulfillment and request closure.
 
-Key Features & Implementation Phases:
 
-Phase 1: Requirement Analysis & Planning
+## Project Overview
 
-Configured the user-facing Car Rental Request Catalog Item under the Transportation Services category in the Service Portal (/sp).
+The **Car Rental Request Automation** project is developed using **ServiceNow** to automate the process of requesting and managing company car rentals.
 
-Designed 7 core form variables (requestor, requested_date, pickup_location, drop_location, duration_hrs, car_type, and reason).
+Employees can submit a car rental request through the **Service Portal**. The request is automatically processed through approval and fulfillment stages using **Flow Designer, Service Catalog, Business Rules, and ServiceNow task management**.
 
-Phase 2: Backend Development & Configurations Data Architecture
+The project demonstrates an end-to-end ServiceNow workflow with proper request tracking, automation, testing, and deployment using Update Sets.
 
-Built dynamic request routing using Flow Designer.
 
-Structured table associations across sc_req_item (RITM) and sc_task (SCTASK).
 
-Configured backend Business Rules to handle exceptions (e.g., auto-creating an Incident when a car is unavailable).
+## Project Objectives
 
-Phase 3: UI/UX Development & Customization
+- Create a centralized Car Rental Request process.
+- Allow employees to submit requests through the Service Portal.
+- Automate manager approval.
+- Automatically generate fulfillment tasks for the Transport/Fleet team.
+- Track requests using REQ, RITM, and SCTASK.
+- Implement backend automation using Business Rules.
+- Automate the request lifecycle using Flow Designer.
+- Package configurations using Update Sets.
+- Provide a structured and traceable request management process.
 
-Formatted the Service Portal interface (/sp) for seamless user experience.
 
-Enabled field validations, mandatory input enforcement, and order confirmation tracking.
 
-Phase 4: Data Migration, Testing & Security
+## ServiceNow Technologies & Features
 
-Executed end-to-end testing of request submissions, approval states, and task fulfillment workflows.
+| Technology / Feature | Usage |
+|---|---|
+| **Service Catalog** | Car Rental Request submission |
+| **Service Portal** | User-facing request interface |
+| **Flow Designer** | Approval and fulfillment automation |
+| **Business Rules** | Backend automation and logic |
+| **Catalog Variables** | Capture request information |
+| **Approvals** | Manager approval process |
+| **REQ / RITM / SCTASK** | Request lifecycle tracking |
+| **Update Sets** | Configuration packaging and deployment |
+| **ServiceNow PDI** | Development and testing environment |
 
-Applied User Criteria and Role-Based Access Control (RBAC) to secure request data.
 
-Phase 5: Deployment, Documentation & Final Presentation
 
-Packaged all configurations into a single ServiceNow Update Set.
+## End-to-End Workflow
 
-Exported system configuration backup (Car_Rental_Request_Setup.xml).
+```text
+Employee
+   │
+   ▼
+Service Portal
+   │
+   ▼
+Car Rental Request
+   │
+   ▼
+REQ / RITM Created
+   │
+   ▼
+Manager Approval
+   │
+   ├──────────────► Rejected
+   │                    │
+   │                    ▼
+   │               Request Closed
+   │
+   ▼
+Approved
+   │
+   ▼
+Fleet / Transport Fulfillment Task
+   │
+   ▼
+Car Assignment & Fulfillment
+   │
+   ▼
+Request Closure
 
-Installation & Setup Guide
+```
 
-To import and deploy this project into your ServiceNow Instance:
 
-Download Update Set: Clone this repository or download Car_Rental_Request_Setup.xml.
 
-Retrieve Remote Update Set:
+## Documentation
 
-Log in to your ServiceNow Instance as System Administrator.
+Detailed project documentation covering all five implementation phases is available in the `Documentation` folder.
 
-Navigate to System Update Sets > Retrieved Update Sets.
+[View Project Documentation](https://drive.google.com/drive/folders/1IaNIrD4T2IE_VfY-SsXToHQwCjs7A5nt?usp=sharing)
 
-Click Import Update Set from XML and select Car_Rental_Request_Setup.xml.
 
-Commit Update Set:
 
-Open the imported record (Car Rental Request Setup).
+## Demo Video
 
-Click Preview Update Set to verify no errors.
+The complete project workflow and ServiceNow implementation are demonstrated in the project demo video.
 
-Click Commit Update Set to apply all configurations.
+[Watch Demo Video](https://drive.google.com/file/d/19_i9aydVxuRa3UDV-7zh9j7bwbwAyyPd/view?usp=drive_link)
 
-Verification:
 
-Navigate to Service Portal (/sp) > Service Catalog.
 
-Search for Car Rental Request and test the submission lifecycle.
